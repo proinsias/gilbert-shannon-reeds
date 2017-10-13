@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -o errexit  # exit on first error
+set -o noclobber  # don't allow overwriting files
+set -o nounset  # don't allow use of unset variables
+set -o pipefail  # produce a failure return code if any pipeline command errors
+shopt -s failglob  # cause globs that don't get expanded to cause errors
+
+TEMP_FILE="$(mktemp)"
+
+pip-compile --verbose --no-annotate --output-file "${TEMP_FILE}" requirements.in
+rm -f requirements.txt
+touch requirements.txt
+hashin --verbose $(grep -v \# "${TEMP_FILE}") -r requirements.txt

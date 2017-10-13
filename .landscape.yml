@@ -1,0 +1,13 @@
+---
+strictness: veryhigh  # default is medium
+pep8:
+  full: true  # default is a subset
+doc-warnings: true  # default is false
+test-warnings: true  # default is false
+max-line-length: 120
+requirements:
+  - requirements.txt
+autodetect: true
+python-targets:
+  - 2
+  - 3
