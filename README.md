@@ -2,6 +2,8 @@
 
 Python implementation of the Gilbert-Shannon-Reeds model for shuffling playing cards.
 
+[![Build Status](https://travis-ci.org/proinsias/gilbert-shannon-reeds.svg?branch=master)](https://travis-ci.org/proinsias/gilbert-shannon-reeds)
+
 From Wikipedia:
 
 > In the mathematics of shuffling playing cards, the Gilbert–Shannon–Reeds model is a
