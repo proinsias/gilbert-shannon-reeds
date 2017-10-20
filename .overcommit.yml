@@ -126,7 +126,7 @@ PreCommit:
   W3cCss:
     enabled: true
   W3cHtml:
-    enabled: true
+    enabled: false
   XmlLint:
     enabled: true
   XmlSyntax:

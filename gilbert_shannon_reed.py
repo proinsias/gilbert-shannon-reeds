@@ -2,19 +2,25 @@
 import multiprocessing as mp
 import typing
 import matplotlib
-matplotlib.use('nbagg')
+matplotlib.use('nbagg')  # noqa: E402
 import matplotlib.pyplot as plt
 import matplotlib.ticker
 import numpy as np
 import scipy as sp
 import sklearn.utils
 # From Wikipedia:
-# > In the mathematics of shuffling playing cards, the Gilbert–Shannon–Reeds model is a probability distribution on riffle shuffle permutations that has been reported to be a good match for experimentally observed outcomes of human shuffling, and that forms the basis for a recommendation that a deck of cards should be riffled seven times in order to thoroughly randomize it. ... The deck of cards is cut into two packets... [t]hen, one card at a time is repeatedly moved from the bottom of one of the packets to the top of the shuffled deck.
+# > In the mathematics of shuffling playing cards, the Gilbert–Shannon–Reeds model is
+# a probability distribution on riffle shuffle permutations that has been reported to
+# be a good match for experimentally observed outcomes of human shuffling, and that
+# forms the basis for a recommendation that a deck of cards should be riffled seven
+# times in order to thoroughly randomize it. ... The deck of cards is cut into two
+# packets... [t]hen, one card at a time is repeatedly moved from the bottom of one of
+# the packets to the top of the shuffled deck.
 # Here we implement the Gilbert–Shannon–Reeds model, and verify this recommendation of seven shuffles.
 # Note that the functions below have `doctest` examples.
 # To test the functions, just run `pytest` in the top level of the repository.
 # First, define a function to determine how many cards to split into our right hand.
-def get_random_number_for_right_deck(n: int, seed: int=None, ) -> int:
+def get_random_number_for_right_deck(n: int, seed: int=None, ) -> int:  # noqa: E302
     """
     Return the number of cards to split into the right sub-deck.
     :param n: one above the highest number that could be returned by this
@@ -30,7 +36,7 @@ def get_random_number_for_right_deck(n: int, seed: int=None, ) -> int:
     random = sklearn.utils.check_random_state(seed=seed, )
     return random.randint(low=1, high=n, )
 # Next, define a function to determine which hand to drop a card from.
-def should_drop_from_right_deck(n_left: int, n_right:int, seed: int=None, ) -> bool:
+def should_drop_from_right_deck(n_left: int, n_right: int, seed: int=None, ) -> bool:  # noqa: E302
     """
     Determine whether we drop a card from the right or left sub-deck.
     Either `n_left` or `n_right` (or both) must be greater than zero.
@@ -69,9 +75,10 @@ def should_drop_from_right_deck(n_left: int, n_right:int, seed: int=None, ) -> b
         return False
     else:
         # There are no more cards in either sub-deck.
-        raise ValueError ('Either `n_left` or `n_right` '                          '(or both) must be greater than zero.')
+        raise ValueError('Either `n_left` or `n_right` ' +
+                         '(or both) must be greater than zero.')
 # Now we can implement the 'Gilbert–Shannon–Reeds' shuffle.
-def shuffle(deck: np.array, seed: int=None, ) -> np.array:
+def shuffle(deck: np.array, seed: int=None, ) -> np.array:  # noqa: E302
     """
     Shuffle the input 'deck' using the Gilbert–Shannon–Reeds method.
     :param seq: the input sequence of integers.
@@ -125,9 +132,9 @@ uniform_rel_freqs = np.full(
     shape=[num_cards, num_cards],
     fill_value=1./num_cards,
 )
-def calculate_differences(
-    num_shuffles: int
-    ) -> typing.Tuple[np.float64, np.float64, np.float64,]:
+def calculate_differences(  # noqa: E302
+        num_shuffles: int
+    ) -> typing.Tuple[np.float64, np.float64, np.float64, ]:
     """
     Calculate differences between observed and uniform distributions.
     :param The number of times to shuffle the deck each time.
@@ -172,26 +179,27 @@ with mp.Pool(mp.cpu_count() - 2) as p:
 sums_squared = results[:, 0]
 entropies = results[:, 1]
 kstests = results[:, 2]
-# The KS statistics are of most use here. You can see how the statistic approaches its maximum value around num_shuffles = 7.
+# The KS statistics are of most use here.
+# You can see how the statistic approaches its maximum value around num_shuffles = 7.
 fs = 14
 fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), kstests, );
+ax.scatter(range(1, max_num_shuffles + 1), kstests, );  # noqa: E703
 ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
 ax.set_xlabel('Number of Shuffles', fontsize=fs, )
 ax.set_ylabel('Kolmogorov-Smirnov Statistic', fontsize=fs, )
 ax.set_xlim([0, max_num_shuffles + 1])
-plt.show();
+plt.show();  # noqa: E703
 fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), sums_squared, );
+ax.scatter(range(1, max_num_shuffles + 1), sums_squared, );  # noqa: E703
 ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
 ax.set_xlabel('Number of Shuffles', fontsize=fs, )
 ax.set_ylabel('Sum of the Squared Differences', fontsize=fs, )
 ax.set_xlim([0, max_num_shuffles + 1])
-plt.show();
+plt.show();  # noqa: E703
 fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), entropies, );
+ax.scatter(range(1, max_num_shuffles + 1), entropies, );  # noqa: E703
 ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
 ax.set_xlabel('Number of Shuffles', fontsize=fs, )
 ax.set_ylabel('Relative Information Entropy', fontsize=fs, )
 ax.set_xlim([0, max_num_shuffles + 1])
-plt.show();
+plt.show();  # noqa: E703
