@@ -22,9 +22,12 @@ rubocop --version
 ruby-lint --version
 travis version --skip-completion-check
 
+# npm
+npm --version
+npm install -g htmlhint
+
 # python
 python --version
 travis_retry python -m pip install --upgrade pip wheel
 travis_retry python -m pip install --require-hashes --requirement \
 requirements.txt
-# make all

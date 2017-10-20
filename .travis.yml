@@ -29,6 +29,7 @@ cache:
     - "${HOME}/.ccache"
     - "${HOME}/.pip-cache"
     - "${VIRTUAL_ENV}"
+    - node_modules # NPM packages
 
 before_cache:
   - ci/travis.before_cache.sh

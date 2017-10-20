@@ -1,4 +1,10 @@
+flake8
 matplotlib
 numpy
+pycodestyle
+pydocstyle
+pyflakes
+pylint
 scikit-learn
 scipy
+yamllint
