@@ -1,13 +1,14 @@
 # coding: utf-8
+"""Implementation of the Gilbert–Shannon–Reeds model."""
 import multiprocessing as mp
 import typing
 import matplotlib
 matplotlib.use('nbagg')  # noqa: E402
-import matplotlib.pyplot as plt
-import matplotlib.ticker
-import numpy as np
-import scipy as sp
-import sklearn.utils
+import matplotlib.pyplot as plt  # pylint: disable=wrong-import-position
+import matplotlib.ticker  # pylint: disable=wrong-import-position
+import numpy as np  # pylint: disable=wrong-import-position
+import scipy as sp  # pylint: disable=wrong-import-position
+import sklearn.utils  # pylint: disable=wrong-import-position
 # From Wikipedia:
 # > In the mathematics of shuffling playing cards, the Gilbert–Shannon–Reeds model is
 # a probability distribution on riffle shuffle permutations that has been reported to
@@ -20,21 +21,21 @@ import sklearn.utils
 # Note that the functions below have `doctest` examples.
 # To test the functions, just run `pytest` in the top level of the repository.
 # First, define a function to determine how many cards to split into our right hand.
-def get_random_number_for_right_deck(n: int, seed: int=None, ) -> int:  # noqa: E302
+def get_random_number_for_right_deck(num: int, seed: int=None, ) -> int:  # noqa: E302  # pylint: disable=invalid-name
     """
     Return the number of cards to split into the right sub-deck.
-    :param n: one above the highest number that could be returned by this
+    :param num: one above the highest number that could be returned by this
               function.
     :param seed: optional seed for the random number generator to enable
                  deterministic behavior.
     :return: a random integer (between 1 and n-1) that represents the
              desired number of cards.
     Examples:
-    >>> get_random_number_for_right_deck(n=5, seed=0, )
+    >>> get_random_number_for_right_deck(num=5, seed=0, )
     1
     """
     random = sklearn.utils.check_random_state(seed=seed, )
-    return random.randint(low=1, high=n, )
+    return random.randint(low=1, high=num, )
 # Next, define a function to determine which hand to drop a card from.
 def should_drop_from_right_deck(n_left: int, n_right: int, seed: int=None, ) -> bool:  # noqa: E302
     """
@@ -94,7 +95,7 @@ def shuffle(deck: np.array, seed: int=None, ) -> np.array:  # noqa: E302
     # 'sub-decks'.
     num_cards_in_deck = len(deck)
     orig_num_cards_right_deck = get_random_number_for_right_deck(
-        n=num_cards_in_deck,
+        num=num_cards_in_deck,
         seed=seed,
     )
     # By definition of get_random_number_for_right_deck():
@@ -122,38 +123,38 @@ def shuffle(deck: np.array, seed: int=None, ) -> np.array:  # noqa: E302
             n_left = n_left - 1
     return shuffled_deck
 # Finally, we run some experiments to confirm the recommendation of seven shuffles for a deck of 52 cards.
-num_cards = 52
-max_num_shuffles = 20
-num_decks = 10000
+NUM_CARDS = 52
+MAX_NUM_SHUFFLES = 20
+NUM_DECKS = 10000
 # Shuffling the cards using a uniform probability
 # distribution results in the same expected frequency
 # for each card in each deck position.
-uniform_rel_freqs = np.full(
-    shape=[num_cards, num_cards],
-    fill_value=1./num_cards,
+UNIFORM_REL_FREQS = np.full(
+    shape=[NUM_CARDS, NUM_CARDS],
+    fill_value=1./NUM_CARDS,
 )
 def calculate_differences(  # noqa: E302
         num_shuffles: int
-    ) -> typing.Tuple[np.float64, np.float64, np.float64, ]:
+    ) -> typing.Tuple[np.float64, np.float64, np.float64, ]:  # pylint: disable=no-member
     """
     Calculate differences between observed and uniform distributions.
     :param The number of times to shuffle the deck each time.
     :return Three metrics for differences between the
             observed and uniform relative frequencies.
     """
-    shuffled_decks = np.empty(shape=[num_decks, num_cards], )
+    shuffled_decks = np.empty(shape=[NUM_DECKS, NUM_CARDS], )
     # First create a random deck.
-    orig_deck = np.array(range(num_cards))
-    np.random.shuffle(orig_deck)
-    for i in range(num_decks):
+    orig_deck = np.array(range(NUM_CARDS))
+    np.random.shuffle(orig_deck)  # pylint: disable=no-member
+    for i in range(NUM_DECKS):
         # Now shuffle this deck using the Gilbert–Shannon–Reeds method.
         new_deck = orig_deck
-        for j in range(num_shuffles):
+        for _ in range(num_shuffles):
             new_deck = shuffle(new_deck)
         shuffled_decks[i] = new_deck
     # Calculate the relative frequencies of each card in each position.
-    rel_freqs = np.empty(shape=[num_cards, num_cards], )
-    for i in range(num_cards):
+    rel_freqs = np.empty(shape=[NUM_CARDS, NUM_CARDS], )
+    for i in range(NUM_CARDS):
         col = shuffled_decks[:, i]
         # Make sure that each card appears at least once in this
         # position, by first adding the entire deck, and then
@@ -162,44 +163,44 @@ def calculate_differences(  # noqa: E302
         col = np.append(col, orig_deck)
         col_freqs = sp.stats.itemfreq(col)[:, 1]
         col_freqs = col_freqs - 1
-        rel_freqs[i] = col_freqs / num_decks
+        rel_freqs[i] = col_freqs / NUM_DECKS
     # Here I use three metrics for differences between the
     # observed and uniform relative frequencies:
     # * The sum of the squared element-wise differences,
     # * The relative information entropy, and
     # * The Kolmogorov-Smirnov statistic.
-    sum_squared = np.sum(np.square(np.subtract(uniform_rel_freqs, rel_freqs)))
-    entropy = sp.stats.entropy(rel_freqs.flatten(), uniform_rel_freqs.flatten())
+    sum_squared = np.sum(np.square(np.subtract(UNIFORM_REL_FREQS, rel_freqs)))  # pylint: disable=no-member
+    entropy = sp.stats.entropy(rel_freqs.flatten(), UNIFORM_REL_FREQS.flatten())
     kstest = sp.stats.kstest(rel_freqs.flatten(), 'uniform').statistic
     return sum_squared, entropy, kstest
 # Now run the experiment using all our CPUs!
 with mp.Pool(mp.cpu_count() - 2) as p:
-    results = p.map(calculate_differences, range(1, max_num_shuffles+1))
-    results = np.array(results)
-sums_squared = results[:, 0]
-entropies = results[:, 1]
-kstests = results[:, 2]
+    RESULTS = p.map(calculate_differences, range(1, MAX_NUM_SHUFFLES + 1))
+    RESULTS = np.array(RESULTS)
+SUMS_SQUARED = RESULTS[:, 0]
+ENTROPIES = RESULTS[:, 1]
+KSTESTS = RESULTS[:, 2]
 # The KS statistics are of most use here.
 # You can see how the statistic approaches its maximum value around num_shuffles = 7.
-fs = 14
-fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), kstests, );  # noqa: E703
-ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
-ax.set_xlabel('Number of Shuffles', fontsize=fs, )
-ax.set_ylabel('Kolmogorov-Smirnov Statistic', fontsize=fs, )
-ax.set_xlim([0, max_num_shuffles + 1])
-plt.show();  # noqa: E703
-fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), sums_squared, );  # noqa: E703
-ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
-ax.set_xlabel('Number of Shuffles', fontsize=fs, )
-ax.set_ylabel('Sum of the Squared Differences', fontsize=fs, )
-ax.set_xlim([0, max_num_shuffles + 1])
-plt.show();  # noqa: E703
-fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), entropies, );  # noqa: E703
-ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
-ax.set_xlabel('Number of Shuffles', fontsize=fs, )
-ax.set_ylabel('Relative Information Entropy', fontsize=fs, )
-ax.set_xlim([0, max_num_shuffles + 1])
-plt.show();  # noqa: E703
+FS = 14
+_, AX = plt.subplots(figsize=(8, 6), dpi=300)
+AX.scatter(range(1, MAX_NUM_SHUFFLES + 1), KSTESTS, );  # noqa: E703  # pylint: disable=unnecessary-semicolon
+AX.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+AX.set_xlabel('Number of Shuffles', fontsize=FS, )
+AX.set_ylabel('Kolmogorov-Smirnov Statistic', fontsize=FS, )
+AX.set_xlim([0, MAX_NUM_SHUFFLES + 1])
+plt.show();  # noqa: E703  # pylint: disable=unnecessary-semicolon
+_, AX = plt.subplots(figsize=(8, 6), dpi=300)
+AX.scatter(range(1, MAX_NUM_SHUFFLES + 1), SUMS_SQUARED, );  # noqa: E703  # pylint: disable=unnecessary-semicolon
+AX.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+AX.set_xlabel('Number of Shuffles', fontsize=FS, )
+AX.set_ylabel('Sum of the Squared Differences', fontsize=FS, )
+AX.set_xlim([0, MAX_NUM_SHUFFLES + 1])
+plt.show();  # noqa: E703  # pylint: disable=unnecessary-semicolon
+_, AX = plt.subplots(figsize=(8, 6), dpi=300)
+AX.scatter(range(1, MAX_NUM_SHUFFLES + 1), ENTROPIES, );  # noqa: E703  # pylint: disable=unnecessary-semicolon
+AX.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+AX.set_xlabel('Number of Shuffles', fontsize=FS, )
+AX.set_ylabel('Relative Information Entropy', fontsize=FS, )
+AX.set_xlim([0, MAX_NUM_SHUFFLES + 1])
+plt.show();  # noqa: E703  # pylint: disable=unnecessary-semicolon
