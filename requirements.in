@@ -7,4 +7,5 @@ pyflakes
 pylint
 scikit-learn
 scipy
+tornado
 yamllint
