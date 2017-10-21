@@ -122,8 +122,8 @@ def shuffle(deck: np.array, seed: int = None, ) -> np.array:  # noqa: E302
             ]
             n_left = n_left - 1
     return shuffled_deck
-# Finally, we run some experiments to confirm the recommendation of seven shuffles for a deck of 52 cards.  # noqa: E305
-NUM_CARDS = 52
+# Finally, we run some experiments to confirm the recommendation of seven shuffles for a deck of 52 cards.
+NUM_CARDS = 52  # noqa: E305
 MAX_NUM_SHUFFLES = 20
 NUM_DECKS = 10000
 # Shuffling the cards using a uniform probability
@@ -173,8 +173,8 @@ def calculate_differences(  # noqa: E302
     entropy = sp.stats.entropy(rel_freqs.flatten(), UNIFORM_REL_FREQS.flatten())
     kstest = sp.stats.kstest(rel_freqs.flatten(), 'uniform').statistic
     return sum_squared, entropy, kstest
-# Now run the experiment using all our CPUs!  # noqa: E305
-with mp.Pool(mp.cpu_count() - 2) as p:
+# Now run the experiment using all our CPUs!
+with mp.Pool(mp.cpu_count() - 2) as p:  # noqa: E305
     RESULTS = p.map(calculate_differences, range(1, MAX_NUM_SHUFFLES + 1))
     RESULTS = np.array(RESULTS)
 SUMS_SQUARED = RESULTS[:, 0]
