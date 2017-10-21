@@ -21,7 +21,7 @@ import sklearn.utils  # pylint: disable=wrong-import-position
 # Note that the functions below have `doctest` examples.
 # To test the functions, just run `pytest` in the top level of the repository.
 # First, define a function to determine how many cards to split into our right hand.
-def get_random_number_for_right_deck(num: int, seed: int=None, ) -> int:  # noqa: E302  # pylint: disable=invalid-name
+def get_random_number_for_right_deck(num: int, seed: int = None, ) -> int:  # noqa: E302  # pylint: disable=invalid-name
     """
     Return the number of cards to split into the right sub-deck.
     :param num: one above the highest number that could be returned by this
@@ -37,7 +37,7 @@ def get_random_number_for_right_deck(num: int, seed: int=None, ) -> int:  # noqa
     random = sklearn.utils.check_random_state(seed=seed, )
     return random.randint(low=1, high=num, )
 # Next, define a function to determine which hand to drop a card from.
-def should_drop_from_right_deck(n_left: int, n_right: int, seed: int=None, ) -> bool:  # noqa: E302
+def should_drop_from_right_deck(n_left: int, n_right: int, seed: int = None, ) -> bool:  # noqa: E302
     """
     Determine whether we drop a card from the right or left sub-deck.
     Either `n_left` or `n_right` (or both) must be greater than zero.
@@ -79,7 +79,7 @@ def should_drop_from_right_deck(n_left: int, n_right: int, seed: int=None, ) -> 
         raise ValueError('Either `n_left` or `n_right` ' +
                          '(or both) must be greater than zero.')
 # Now we can implement the 'Gilbert–Shannon–Reeds' shuffle.
-def shuffle(deck: np.array, seed: int=None, ) -> np.array:  # noqa: E302
+def shuffle(deck: np.array, seed: int = None, ) -> np.array:  # noqa: E302
     """
     Shuffle the input 'deck' using the Gilbert–Shannon–Reeds method.
     :param seq: the input sequence of integers.
@@ -122,7 +122,7 @@ def shuffle(deck: np.array, seed: int=None, ) -> np.array:  # noqa: E302
             ]
             n_left = n_left - 1
     return shuffled_deck
-# Finally, we run some experiments to confirm the recommendation of seven shuffles for a deck of 52 cards.
+# Finally, we run some experiments to confirm the recommendation of seven shuffles for a deck of 52 cards.  # noqa: E305
 NUM_CARDS = 52
 MAX_NUM_SHUFFLES = 20
 NUM_DECKS = 10000
@@ -173,7 +173,7 @@ def calculate_differences(  # noqa: E302
     entropy = sp.stats.entropy(rel_freqs.flatten(), UNIFORM_REL_FREQS.flatten())
     kstest = sp.stats.kstest(rel_freqs.flatten(), 'uniform').statistic
     return sum_squared, entropy, kstest
-# Now run the experiment using all our CPUs!
+# Now run the experiment using all our CPUs!  # noqa: E305
 with mp.Pool(mp.cpu_count() - 2) as p:
     RESULTS = p.map(calculate_differences, range(1, MAX_NUM_SHUFFLES + 1))
     RESULTS = np.array(RESULTS)
