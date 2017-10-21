@@ -1,4 +1,6 @@
 flake8
+ipykernel
+ipython
 matplotlib
 numpy
 pycodestyle
