@@ -7,6 +7,7 @@ pycodestyle
 pydocstyle
 pyflakes
 pylint
+ptyprocess
 scikit-learn
 scipy
 tornado
