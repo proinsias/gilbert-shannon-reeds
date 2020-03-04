@@ -36,6 +36,7 @@ before_cache:
 
 before_install:
   - gem install bundler
+  - npm install htmlhint -g
   - ci/travis.before_install.sh
 
 install:

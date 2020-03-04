@@ -77,17 +77,26 @@ PreCommit:
     enabled: true
   Mdl:
     enabled: true
-  Pep257:  # TODO: Replace with Pydocstyle ?
+  Pycodestyle:
     enabled: true
+    on_fail: 'warn'
     flags:
-      - '--explain'
-      - '--source'
-      - '--verbose'
-  Pep8:  # TODO: Replace with Pycodestyle ?
-    enabled: true
-    flags:
+      # E703 statement ends with a semicolon. Need for matplotlib in Jupyter notebooks.
+      - '--ignore=E211,E231,E703,W291,W293'
       - '--max-line-length=120'
-      - '--show-source'
+      # - '--show-source'  # Don't use!
+    exclude:
+      - 'jupyter/jupyter_notebook_config.py'
+      - 'setup.py'
+  Pydocstyle:
+    enabled: true
+    flags:
+      # - '--explain'  # Don't use!
+      - '--ignore=D100,D103,D203'
+      # - '--source'  # Don't use!
+      # - '--verbose'  # Don't use!
+    exclude:
+      - 'jupyter/jupyter_notebook_config.py'
   Pyflakes:
     enabled: true
   Pylint:

@@ -1,4 +1,12 @@
+flake8
 matplotlib
 numpy
+pip-tools
+pycodestyle
+pydocstyle
+pyflakes
+pylint
+safety
 scikit-learn
 scipy
+yamllint
