@@ -9,6 +9,9 @@ shopt -s failglob  # cause globs that don't get expanded to cause errors
 
 echo "install start"
 
+# Install shellcheck
+sudo apt-get install --yes --allow-unauthenticated shellcheck
+
 # ruby
 rvm --default use 2.3.2
 ruby --version
