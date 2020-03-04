@@ -28,6 +28,4 @@ travis version --skip-completion-check
 # python
 python --version
 travis_retry python -m pip install --upgrade pip wheel
-travis_retry python -m pip install --require-hashes --requirement \
-requirements.txt
-# make all
+travis_retry python -m pip install --requirement requirements.txt
