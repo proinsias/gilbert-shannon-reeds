@@ -8,6 +8,9 @@ branches:
 
 language: python
 
+rvm:
+  - 2.7.0
+
 matrix:
   include:
     - python: 3.6
@@ -32,7 +35,7 @@ before_cache:
   - ci/travis.before_cache.sh
 
 before_install:
-  - travis_retry rvm install 2.3.2 && rvm --default use 2.3.2
+  - gem install bundler
   - ci/travis.before_install.sh
 
 install:
