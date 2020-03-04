@@ -52,6 +52,11 @@ PreCommit:
     enabled: true
   Eslint:
     enabled: true
+  ExecutePermissions:
+    enabled: true
+    exclude:
+      - 'bin/**/*'
+      - 'ci/*.sh'
   FixMe:
     enabled: true
   HardTabs:

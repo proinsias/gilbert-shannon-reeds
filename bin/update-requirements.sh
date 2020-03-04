@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CUSTOM_COMPILE_COMMAND="./update-requirements.sh"
+CUSTOM_COMPILE_COMMAND="./bin/update-requirements.sh"
 export CUSTOM_COMPILE_COMMAND
 
 pip-compile --annotate --header --upgrade --verbose \
