@@ -83,10 +83,11 @@ PreCommit:
   Mdl:
     enabled: true
   Pycodestyle:
-    enabled: true
+    enabled: false
     on_fail: 'warn'
     flags:
-      # E703 statement ends with a semicolon. Need for matplotlib in Jupyter notebooks.
+      # E703 statement ends with a semicolon.
+      # Need for matplotlib in Jupyter notebooks.
       - '--ignore=E211,E231,E703,W291,W293'
       - '--max-line-length=120'
       # - '--show-source'  # Don't use!
@@ -105,14 +106,14 @@ PreCommit:
   Pyflakes:
     enabled: true
   Pylint:
-    enabled: true
+    enabled: false
     flags:
       - '--max-line-length=120'
       - '--msg-template="{path}:{line}:{C}: {msg} ({symbol})"'
       - '--reports=n'
       - '--persistent=n'
   PythonFlake8:
-    enabled: true
+    enabled: false
     flags:
       - '--doctests'
       - '--max-complexity=10'
@@ -140,7 +141,7 @@ PreCommit:
   W3cCss:
     enabled: true
   W3cHtml:
-    enabled: true
+    enabled: false
   XmlLint:
     enabled: true
   XmlSyntax:
