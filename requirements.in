@@ -1,5 +1,6 @@
 flake8
-ipython  # For matplotlib.
+ipykernel  # For matplotlib backend.
+ipython  # For matplotlib backend.
 matplotlib
 numpy
 pip-tools
@@ -7,6 +8,7 @@ pycodestyle
 pydocstyle
 pyflakes
 pylint
+pytest
 safety
 scikit-learn
 scipy

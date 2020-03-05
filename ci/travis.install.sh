@@ -28,7 +28,6 @@ travis version --skip-completion-check
 # python
 python --version
 travis_retry pip install --upgrade pip wheel
-travis_retry pip uninstall --yes numpy
-travis_retry pip uninstall --yes numpy
-travis_retry pip uninstall --yes numpy
+# shellcheck disable=SC2034
+for n in {1..3}; do travis_retry pip uninstall --yes numpy; done
 travis_retry pip install --requirement requirements.txt
