@@ -136,6 +136,8 @@ PreCommit:
     enabled: true
   TrailingWhitespace:
     enabled: true
+    exclude:
+      - '**/*.html'
   TravisLint:
     enabled: true
   W3cCss:
