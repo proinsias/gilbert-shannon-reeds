@@ -135,9 +135,7 @@ PreCommit:
   Sqlint:
     enabled: true
   TrailingWhitespace:
-    enabled: true
-    exclude:
-      - '**/*.html'
+    enabled: false
   TravisLint:
     enabled: true
   W3cCss:
