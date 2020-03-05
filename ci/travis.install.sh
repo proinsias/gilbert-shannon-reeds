@@ -31,7 +31,4 @@ travis_retry pip install --upgrade pip wheel
 travis_retry pip uninstall --yes numpy
 travis_retry pip uninstall --yes numpy
 travis_retry pip uninstall --yes numpy
-travis_retry pip uninstall --yes numpy
-travis_retry pip uninstall --yes numpy
-travis_retry pip uninstall --yes numpy
 travis_retry pip install --requirement requirements.txt
