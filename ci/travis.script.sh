@@ -11,4 +11,4 @@ ruby --version
 overcommit --sign
 overcommit --sign pre-commit
 overcommit --run
-python -m pytest
+
