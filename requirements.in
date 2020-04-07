@@ -10,7 +10,7 @@ pydocstyle
 pyflakes
 pylint
 pytest
-safety
+pyyaml>=5.3.1
 scikit-learn
 scipy
 yamllint

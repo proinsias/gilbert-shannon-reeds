@@ -15,7 +15,6 @@ click==7.0                # via pip-tools, safety
 cycler==0.10.0            # via matplotlib
 decorator==4.4.2          # via ipython, traitlets
 defusedxml==0.6.0         # via nbconvert
-dparse==0.4.1             # via safety
 entrypoints==0.3          # via flake8, nbconvert
 flake8==3.7.9             # via -r requirements.in
 idna==2.9                 # via requests
@@ -65,12 +64,10 @@ pyparsing==2.4.6          # via matplotlib, packaging
 pyrsistent==0.15.7        # via jsonschema
 pytest==5.3.5             # via -r requirements.in
 python-dateutil==2.8.1    # via jupyter-client, matplotlib
-pyyaml==5.3               # via dparse, yamllint
+pyyaml==5.3.1               # via dparse, yamllint
 pyzmq==19.0.0             # via jupyter-client, notebook
 qtconsole==4.7.1          # via jupyter
 qtpy==1.9.0               # via qtconsole
-requests==2.23.0          # via safety
-safety==1.8.5             # via -r requirements.in
 scikit-learn==0.22.2.post1  # via -r requirements.in
 scipy==1.4.1              # via -r requirements.in, scikit-learn
 send2trash==1.5.0         # via notebook
