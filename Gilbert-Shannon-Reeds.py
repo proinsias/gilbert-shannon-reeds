@@ -23,7 +23,7 @@ get_ipython().run_line_magic('autoreload', '2')
 # To test the functions, just run `pytest` in the top level of the repository.
 # First, define a function to determine how many cards to split into our right hand.
 # In[4]:
-def get_random_number_for_right_deck(n: int, seed: int=None, ) -> int:
+def get_random_number_for_right_deck(n: int, seed: int=None) -> int:
     """
     Return the number of cards to split into the right sub-deck.
     :param n: one above the highest number that could be returned by this
@@ -36,24 +36,24 @@ def get_random_number_for_right_deck(n: int, seed: int=None, ) -> int:
     >>> get_random_number_for_right_deck(n=5, seed=0, )
     1
     """
-    random = sklearn.utils.check_random_state(seed=seed, )
-    
-    return random.randint(low=1, high=n, )
+    random = sklearn.utils.check_random_state(seed=seed)
+
+    return random.randint(low=1, high=n)
 # Next, define a function to determine which hand to drop a card from.
 # In[5]:
-def should_drop_from_right_deck(n_left: int, n_right:int, seed: int=None, ) -> bool:
+def should_drop_from_right_deck(n_left: int, n_right:int, seed: int=None) -> bool:
     """
     Determine whether we drop a card from the right or left sub-deck.
-    
+
     Either `n_left` or `n_right` (or both) must be greater than zero.
-    
+
     :param n_left: the number of cards in the left sub-deck.
     :param n_right: the number of cards in the right sub-deck.
     :param seed: optional seed for the random number generator to
                  enable deterministic behavior.
     :return: True if we should drop a card from the right sub-deck,
              False otherwise.
-    
+
     Examples:
     >>> should_drop_from_right_deck(n_left=32, n_right=5, seed=0, )
     True
@@ -69,8 +69,8 @@ def should_drop_from_right_deck(n_left: int, n_right:int, seed: int=None, ) -> b
     if n_left > 0 and n_right > 0:
         # There are cards left in both sub-decks, so pick a
         # sub-deck at random.
-        random = sklearn.utils.check_random_state(seed=seed, )
-        num = random.randint(low=0, high=2, )
+        random = sklearn.utils.check_random_state(seed=seed)
+        num = random.randint(low=0, high=2)
         boolean = (num == 0)
         return boolean
     elif n_left == 0 and n_right > 0:
@@ -86,7 +86,7 @@ def should_drop_from_right_deck(n_left: int, n_right:int, seed: int=None, ) -> b
         raise ValueError ('Either `n_left` or `n_right` '                          '(or both) must be greater than zero.')
 # Now we can implement the 'Gilbert–Shannon–Reeds' shuffle.
 # In[6]:
-def shuffle(deck: np.array, seed: int=None, ) -> np.array:
+def shuffle(deck: np.array, seed: int=None) -> np.array:
     """
     Shuffle the input 'deck' using the Gilbert–Shannon–Reeds method.
     :param seq: the input sequence of integers.
@@ -98,7 +98,7 @@ def shuffle(deck: np.array, seed: int=None, ) -> np.array:
     >>> shuffle(deck=np.array([0, 7, 3, 8, 4, 9, ]), seed=0, )
     array([4, 8, 3, 7, 0, 9])
     """
-    
+
     # First randomly divide the 'deck' into 'left' and 'right'
     # 'sub-decks'.
     num_cards_in_deck = len(deck)
@@ -108,11 +108,11 @@ def shuffle(deck: np.array, seed: int=None, ) -> np.array:
     )
     # By definition of get_random_number_for_right_deck():
     n_right = orig_num_cards_right_deck
-    
+
     n_left = num_cards_in_deck - orig_num_cards_right_deck
-    
+
     shuffled_deck = np.empty(num_cards_in_deck, dtype=int)
-    
+
     # We will drop a card n times.
     for index in range(num_cards_in_deck):
         drop_from_right_deck = should_drop_from_right_deck(
@@ -120,7 +120,7 @@ def shuffle(deck: np.array, seed: int=None, ) -> np.array:
             n_right=n_right,
             seed=seed,
         )
-        
+
         if drop_from_right_deck is True:
             # Drop from the bottom of right sub-deck
             # onto the shuffled pile.
@@ -133,7 +133,7 @@ def shuffle(deck: np.array, seed: int=None, ) -> np.array:
                 orig_num_cards_right_deck + n_left - 1
             ]
             n_left = n_left - 1
-    
+
     return shuffled_deck
 # Finally, we run some experiments to confirm the recommendation of seven shuffles for a deck of 52 cards.
 # In[7]:
@@ -149,16 +149,16 @@ uniform_rel_freqs = np.full(
 )
 # In[16]:
 def calculate_differences(
-    num_shuffles: int
-    ) -> typing.Tuple[np.float64, np.float64, np.float64,]:
+    num_shuffles: int,
+) -> typing.Tuple[np.float64, np.float64, np.float64]:
     """
     Calculate differences between observed and uniform distributions.
-    
+
     :param The number of times to shuffle the deck each time.
     :return Three metrics for differences between the
             observed and uniform relative frequencies.
     """
-    shuffled_decks = np.empty(shape=[num_decks, num_cards], )
+    shuffled_decks = np.empty(shape=[num_decks, num_cards])
     # First create a random deck.
     orig_deck = np.array(range(num_cards))
     np.random.shuffle(orig_deck)
@@ -167,13 +167,13 @@ def calculate_differences(
         new_deck = orig_deck
         for j in range(num_shuffles):
             new_deck = shuffle(new_deck)
-        
+
         shuffled_decks[i] = new_deck
     # Calculate the relative frequencies of each card in each position.
-    rel_freqs = np.empty(shape=[num_cards, num_cards], )
+    rel_freqs = np.empty(shape=[num_cards, num_cards])
     for i in range(num_cards):
         col = shuffled_decks[:, i]
-        
+
         # Make sure that each card appears at least once in this
         # position, by first adding the entire deck, and then
         # subtracting 1 from the total counts of each card in
@@ -182,7 +182,7 @@ def calculate_differences(
         col_freqs = sp.stats.itemfreq(col)[:, 1]
         col_freqs = col_freqs - 1
         rel_freqs[i] = col_freqs / num_decks
-    
+
     # Here I use three metrics for differences between the
     # observed and uniform relative frequencies:
     # * The sum of the squared element-wise differences,
@@ -191,7 +191,7 @@ def calculate_differences(
     sum_squared = np.sum(np.square(np.subtract(uniform_rel_freqs, rel_freqs)))
     entropy = sp.stats.entropy(rel_freqs.flatten(), uniform_rel_freqs.flatten())
     kstest = sp.stats.kstest(rel_freqs.flatten(), 'uniform').statistic
-    
+
     return sum_squared, entropy, kstest
 # In[17]:
 # Now run the experiment using all our CPUs!
@@ -208,26 +208,26 @@ kstests = results[:, 2]
 fs = 14
 # In[20]:
 fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), kstests, );
+ax.scatter(range(1, max_num_shuffles + 1), kstests);
 ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
-ax.set_xlabel('Number of Shuffles', fontsize=fs, )
-ax.set_ylabel('Kolmogorov-Smirnov Statistic', fontsize=fs, )
+ax.set_xlabel('Number of Shuffles', fontsize=fs)
+ax.set_ylabel('Kolmogorov-Smirnov Statistic', fontsize=fs)
 ax.set_xlim([0, max_num_shuffles + 1])
 plt.show();
 # In[21]:
 fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), sums_squared, );
+ax.scatter(range(1, max_num_shuffles + 1), sums_squared);
 ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
-ax.set_xlabel('Number of Shuffles', fontsize=fs, )
-ax.set_ylabel('Sum of the Squared Differences', fontsize=fs, )
+ax.set_xlabel('Number of Shuffles', fontsize=fs)
+ax.set_ylabel('Sum of the Squared Differences', fontsize=fs)
 ax.set_xlim([0, max_num_shuffles + 1])
 plt.show();
 # In[22]:
 fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
-ax.scatter(range(1, max_num_shuffles + 1), entropies, );
+ax.scatter(range(1, max_num_shuffles + 1), entropies);
 ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
-ax.set_xlabel('Number of Shuffles', fontsize=fs, )
-ax.set_ylabel('Relative Information Entropy', fontsize=fs, )
+ax.set_xlabel('Number of Shuffles', fontsize=fs)
+ax.set_ylabel('Relative Information Entropy', fontsize=fs)
 ax.set_xlim([0, max_num_shuffles + 1])
 plt.show();
 # In[ ]:
