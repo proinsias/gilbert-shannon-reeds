@@ -1,0 +1,88 @@
+# yamllint disable-line rule:document-start
+name: Pull Requests & Pushes
+
+# yamllint disable-line rule:truthy
+on: [push, pull_request]
+
+jobs:
+
+  github-actions:
+    name: GitHub Actions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache gems
+        uses: actions/cache@v2.1.4
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gem-
+
+      - name: alex
+        uses: reviewdog/action-alex@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
+          reporter: github-pr-review
+          # Change reporter level if you need.
+          # GitHub Status Check won't become failure with warning.
+          level: warning
+
+      - name: 'Bundler Audit'
+        uses: andrewmcodes/bundler-audit-action@v0.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: markdownlint
+        uses: reviewdog/action-markdownlint@v0.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+
+      - name: markdown-link-check
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          check-modified-files-only: true
+          max-depth: 1
+
+      - name: misspell
+        uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          locale: "US"
+
+      # - name: pre-commit
+      #   uses: pre-commit/action@v2.0.2
+
+      - name: shellcheck
+        uses: reviewdog/action-shellcheck@v1
+        with:
+          exclude: "./.git/*"  # Optional.
+          fail_on_error: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          path: "."
+          pattern: "*.sh"  # Optional.
+          reporter: github-pr-review  # Change reporter.
+          shellcheck_flags: '--external-sources --format=gcc --shell=bash'
+
+      - name: yamllint
+        uses: karancode/yamllint-github-action@v2.0.0
+        with:
+          yamllint_config_filepath: '.yamllint.yml'
+          yamllint_comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update TOC
+        run: npx markdown-toc README.md -i
+
+      - name: Commit and push if README changed
+        run: |-
+          git diff
+          git config --global user.email "proinsias@users.noreply.github.com"
+          git config --global user.name "Francis T. O'Donovan"
+          git diff --quiet || (git add README.md && git commit -m "Updated README TOC")
+          git push

@@ -1,0 +1,27 @@
+# yamllint disable-line rule:document-start
+name: Pull Requests
+
+# yamllint disable-line rule:truthy
+on: pull_request
+
+jobs:
+
+  code-quality:
+    name: Check code quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: languagetool
+        uses: reviewdog/action-languagetool@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
+          reporter: github-pr-review
+          # Change reporter level if you need.
+          level: warning
+
+      - name: Dependabot Auto Merge
+        uses: ahmadnassri/action-dependabot-auto-merge@v2.3.1

@@ -1,0 +1,7 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://github.com/proinsias/gilbert-shannon-reeds/workflows/Pull%20Requests%20%26%20Pushes/badge.svg"
+    }
+  ]
+}
