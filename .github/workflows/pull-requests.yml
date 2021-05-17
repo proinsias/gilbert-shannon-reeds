@@ -24,4 +24,4 @@ jobs:
           level: warning
 
       - name: Dependabot Auto Merge
-        uses: ahmadnassri/action-dependabot-auto-merge@v2.3.1
+        uses: ahmadnassri/action-dependabot-auto-merge@v2.4
