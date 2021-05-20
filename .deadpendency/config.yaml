@@ -7,3 +7,18 @@ additional-dependency-files:
 
   - type: pip-requirements-txt
     path: requirements.txt
+
+ignore-failures:
+
+  python:
+    - async-generator
+    - cycler
+    - entrypoints
+    - mccabe
+    - mistune
+    - pickleshare
+    - send2trash
+    - webencodings
+
+  ruby:
+    - ruby-lint
