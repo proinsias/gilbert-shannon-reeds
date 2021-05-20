@@ -4,10 +4,6 @@
 #
 #    ./bin/update-requirements
 #
-appnope==0.1.2
-    # via
-    #   ipykernel
-    #   ipython
 argon2-cffi==20.1.0
     # via notebook
 astroid==2.5.6
@@ -38,7 +34,7 @@ flake8==3.9.2
     # via -r requirements.in
 iniconfig==1.1.1
     # via pytest
-ipykernel==5.5.4
+ipykernel==5.5.5
     # via
     #   -r requirements.in
     #   ipywidgets
