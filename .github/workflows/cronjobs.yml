@@ -61,3 +61,11 @@ jobs:
           check-modified-files-only: 'no'
           max-depth: 1
           config-file: 'mlc_config.json'
+
+      - name: Dependabot Auto Merge
+        uses: koj-co/dependabot-pr-action
+        with:
+          github-token: ${{ secrets.github_token }}
+          approve: true
+          auto-level: true
+          merge: true
