@@ -89,7 +89,7 @@ repos:
 
   - repo: https://github.com/asottile/pyupgrade
     # Automatically upgrade syntax for newer versions of the language.
-    rev: v2.19.0
+    rev: v2.19.1
     hooks:
       - id: pyupgrade
 
