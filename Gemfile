@@ -7,7 +7,6 @@ gem 'bundler-audit'
 gem 'fasterer'
 gem 'ffi', '>= 1.9.24' # CVE-2018-1000201.
 gem 'mdl'
-gem 'overcommit'
 gem 'reek'
 gem 'rubocop'
 gem 'ruby-lint'
