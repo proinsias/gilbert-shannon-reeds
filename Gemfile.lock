@@ -14,7 +14,6 @@ GEM
       thor (~> 1.0)
     chef-utils (17.0.242)
       concurrent-ruby
-    childprocess (4.0.0)
     colorize (0.8.1)
     concurrent-ruby (1.1.8)
     faraday (1.4.1)
@@ -31,7 +30,7 @@ GEM
     fasterer (0.9.0)
       colorize (~> 0.7)
       ruby_parser (>= 3.14.1)
-    ffi (1.15.1)
+    ffi (1.15.3)
     gh (0.18.0)
       activesupport (~> 5.0)
       addressable (~> 2.4)
@@ -43,7 +42,6 @@ GEM
     highline (2.0.3)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    iniparse (1.5.0)
     json (2.5.1)
     json_pure (2.5.1)
     kramdown (2.3.1)
@@ -73,9 +71,6 @@ GEM
     nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    overcommit (0.57.0)
-      childprocess (>= 0.6.3, < 5)
-      iniparse (~> 1.4)
     parallel (1.20.1)
     parser (2.7.2.0)
       ast (~> 2.4.1)
@@ -142,7 +137,6 @@ DEPENDENCIES
   fasterer
   ffi (>= 1.9.24)
   mdl
-  overcommit
   reek
   rubocop
   ruby-lint
