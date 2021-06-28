@@ -42,18 +42,18 @@ ipykernel==5.5.5
     #   jupyter-console
     #   notebook
     #   qtconsole
-ipython-genutils==0.2.0
-    # via
-    #   nbformat
-    #   notebook
-    #   qtconsole
-    #   traitlets
 ipython==7.24.1
     # via
     #   -r requirements.in
     #   ipykernel
     #   ipywidgets
     #   jupyter-console
+ipython-genutils==0.2.0
+    # via
+    #   nbformat
+    #   notebook
+    #   qtconsole
+    #   traitlets
 ipywidgets==7.6.3
     # via jupyter
 isort==5.8.0
@@ -68,6 +68,8 @@ joblib==1.0.1
     # via scikit-learn
 jsonschema==3.2.0
     # via nbformat
+jupyter==1.0.0
+    # via -r requirements.in
 jupyter-client==6.1.12
     # via
     #   ipykernel
@@ -84,8 +86,6 @@ jupyter-core==4.7.1
     #   nbformat
     #   notebook
     #   qtconsole
-jupyter==1.0.0
-    # via -r requirements.in
 jupyterlab-pygments==0.1.2
     # via nbconvert
 jupyterlab-widgets==1.0.0
@@ -96,10 +96,10 @@ lazy-object-proxy==1.6.0
     # via astroid
 markupsafe==1.1.1
     # via jinja2
-matplotlib-inline==0.1.2
-    # via ipython
 matplotlib==3.4.2
     # via -r requirements.in
+matplotlib-inline==0.1.2
+    # via ipython
 mccabe==0.6.1
     # via
     #   flake8
@@ -149,7 +149,7 @@ pickleshare==0.7.5
     # via ipython
 pillow==8.2.0
     # via matplotlib
-pip-tools==6.1.0
+pip-tools==6.2.0
     # via -r requirements.in
 pluggy==0.13.1
     # via pytest
@@ -262,6 +262,8 @@ wcwidth==0.2.5
     # via prompt-toolkit
 webencodings==0.5.1
     # via bleach
+wheel==0.36.2
+    # via pip-tools
 widgetsnbextension==3.5.1
     # via ipywidgets
 wrapt==1.12.1
