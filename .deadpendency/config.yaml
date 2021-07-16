@@ -19,6 +19,7 @@ ignore-failures:
     - mccabe
     - mistune
     - pickleshare
+    - qtpy
     - send2trash
     - webencodings
 
