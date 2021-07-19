@@ -41,7 +41,7 @@ jobs:
           body: Update versions of pre-commit hooks to latest version.
 
       - name: Mark Stale Issues
-        uses: actions/stale@v3.0.19
+        uses: actions/stale@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           # yamllint disable-line rule:line-length
