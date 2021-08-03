@@ -188,7 +188,7 @@ pygments==2.9.0
     #   jupyterlab-pygments
     #   nbconvert
     #   qtconsole
-pylint==2.9.5
+pylint==2.9.6
     # via -r requirements.in
 pyparsing==2.4.7
     # via
