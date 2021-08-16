@@ -52,7 +52,7 @@ pull_request_rules:
       label:
         add:
           - conflict
-  - name: delete head branch after merge
-    conditions: []
-    actions:
-      delete_head_branch: {}
+#   - name: delete head branch after merge
+#     conditions: []
+#     actions:
+#       delete_head_branch: {}
