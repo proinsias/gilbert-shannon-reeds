@@ -98,7 +98,7 @@ lazy-object-proxy==1.6.0
     # via astroid
 markupsafe==1.1.1
     # via jinja2
-matplotlib==3.4.2
+matplotlib==3.4.3
     # via -r requirements.in
 matplotlib-inline==0.1.2
     # via
