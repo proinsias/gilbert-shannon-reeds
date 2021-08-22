@@ -89,14 +89,14 @@ repos:
 
   - repo: https://github.com/asottile/pyupgrade
     # Automatically upgrade syntax for newer versions of the language.
-    rev: v2.23.3
+    rev: v2.24.0
     hooks:
       - id: pyupgrade
 
   # YAML
 
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.26.2
+    rev: v1.26.3
     hooks:
       - id: yamllint
         args: [-c=.yamllint.yml]
