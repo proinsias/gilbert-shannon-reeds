@@ -6,7 +6,7 @@
 #
 argon2-cffi==20.1.0
     # via notebook
-astroid==2.6.5
+astroid==2.7.2
     # via pylint
 async-generator==1.10
     # via nbclient
@@ -155,6 +155,8 @@ pillow==8.2.0
     # via matplotlib
 pip-tools==6.2.0
     # via -r requirements.in
+platformdirs==2.2.0
+    # via pylint
 pluggy==0.13.1
     # via pytest
 prometheus-client==0.10.1
@@ -188,7 +190,7 @@ pygments==2.9.0
     #   jupyterlab-pygments
     #   nbconvert
     #   qtconsole
-pylint==2.9.6
+pylint==2.10.2
     # via -r requirements.in
 pyparsing==2.4.7
     # via
