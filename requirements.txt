@@ -152,7 +152,7 @@ pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
     # via ipython
-pillow==8.2.0
+pillow==8.3.2
     # via matplotlib
 pip-tools==6.2.0
     # via -r requirements.in
@@ -199,7 +199,7 @@ pyparsing==2.4.7
     #   packaging
 pyrsistent==0.17.3
     # via jsonschema
-pytest==6.2.4
+pytest==6.2.5
     # via -r requirements.in
 python-dateutil==2.8.1
     # via
