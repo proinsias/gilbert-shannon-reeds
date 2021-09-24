@@ -4,9 +4,7 @@ pull_request_rules:
     conditions:
       - base=master
       - author~=github-actions
-      - check-success-or-neutral=Check code quality
       - check-success-or-neutral=Deadpendency Check
-      - check-success-or-neutral=GitHub Actions
       - check-success-or-neutral=Hound
     actions:
       merge:
@@ -16,9 +14,7 @@ pull_request_rules:
     conditions:
       - base=master
       - author~=dependabot
-      - check-success-or-neutral=Check code quality
       - check-success-or-neutral=Deadpendency Check
-      - check-success-or-neutral=GitHub Actions
       - check-success-or-neutral=Hound
     actions:
       merge:
