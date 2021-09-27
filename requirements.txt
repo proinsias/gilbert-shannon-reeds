@@ -44,7 +44,7 @@ ipykernel==6.4.1
     #   jupyter-console
     #   notebook
     #   qtconsole
-ipython==7.27.0
+ipython==7.28.0
     # via
     #   -r requirements.in
     #   ipykernel
