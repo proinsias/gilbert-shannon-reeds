@@ -32,7 +32,7 @@ defusedxml==0.7.1
     # via nbconvert
 entrypoints==0.3
     # via nbconvert
-flake8==4.0.0
+flake8==4.0.1
     # via -r requirements.in
 iniconfig==1.1.1
     # via pytest
