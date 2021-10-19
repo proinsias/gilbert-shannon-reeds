@@ -21,16 +21,6 @@ jobs:
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: ${{ runner.os }}-gem-
 
-      - name: alex
-        uses: reviewdog/action-alex@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
-          reporter: github-pr-review
-          # Change reporter level if you need.
-          # GitHub Status Check won't become failure with warning.
-          level: warning
-
       - name: 'Bundler Audit'
         uses: andrewmcodes/bundler-audit-action@v0.1.0
         env:
@@ -47,12 +37,6 @@ jobs:
         with:
           check-modified-files-only: true
           max-depth: 1
-
-      - name: misspell
-        uses: reviewdog/action-misspell@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          locale: "US"
 
       # - name: pre-commit
       #   uses: pre-commit/action@v2.0.2
