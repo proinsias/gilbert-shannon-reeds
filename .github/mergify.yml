@@ -1,4 +1,11 @@
 ---
+queue_rules:
+  - name: default
+    conditions:
+      # Conditions to get out of the queue (= merged)
+      - check-success-or-neutral=Deadpendency Check
+      - check-success-or-neutral=Hound
+
 pull_request_rules:
   - name: automatic merge on CI success and review
     conditions:
@@ -7,9 +14,9 @@ pull_request_rules:
       - check-success-or-neutral=Deadpendency Check
       - check-success-or-neutral=Hound
     actions:
-      merge:
+      queue:
         method: merge
-        strict: smart
+        name: default
   - name: automatic merge for Dependabot pull requests
     conditions:
       - base=master
@@ -17,9 +24,9 @@ pull_request_rules:
       - check-success-or-neutral=Deadpendency Check
       - check-success-or-neutral=Hound
     actions:
-      merge:
+      queue:
         method: merge
-        strict: smart
+        name: default
   - name: warn on conflicts
     conditions:
       - conflict
