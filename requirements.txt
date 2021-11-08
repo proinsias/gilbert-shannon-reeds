@@ -220,7 +220,7 @@ qtpy==1.9.0
     # via qtconsole
 scikit-learn==1.0
     # via -r requirements.in
-scipy==1.7.1
+scipy==1.7.2
     # via
     #   -r requirements.in
     #   scikit-learn
@@ -265,10 +265,6 @@ traitlets==5.0.5
     #   nbformat
     #   notebook
     #   qtconsole
-typing-extensions==3.10.0.2
-    # via
-    #   astroid
-    #   pylint
 wcwidth==0.2.5
     # via prompt-toolkit
 webencodings==0.5.1
