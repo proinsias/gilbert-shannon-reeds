@@ -36,7 +36,7 @@ flake8==4.0.1
     # via -r requirements.in
 iniconfig==1.1.1
     # via pytest
-ipykernel==6.4.2
+ipykernel==6.5.0
     # via
     #   -r requirements.in
     #   ipywidgets
@@ -52,11 +52,9 @@ ipython==7.29.0
     #   jupyter-console
 ipython-genutils==0.2.0
     # via
-    #   ipykernel
     #   nbformat
     #   notebook
     #   qtconsole
-    #   traitlets
 ipywidgets==7.6.3
     # via jupyter
 isort==5.8.0
@@ -252,7 +250,7 @@ tornado==6.1
     #   jupyter-client
     #   notebook
     #   terminado
-traitlets==5.0.5
+traitlets==5.1.1
     # via
     #   ipykernel
     #   ipython
