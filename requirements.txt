@@ -222,7 +222,7 @@ qtpy==1.9.0
     # via qtconsole
 scikit-learn==1.0.1
     # via -r requirements.in
-scipy==1.7.2
+scipy==1.7.3
     # via
     #   -r requirements.in
     #   scikit-learn
