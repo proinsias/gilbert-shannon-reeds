@@ -6,7 +6,7 @@
 #
 argon2-cffi==20.1.0
     # via notebook
-astroid==2.8.0
+astroid==2.9.0
     # via pylint
 async-generator==1.10
     # via nbclient
@@ -193,7 +193,7 @@ pygments==2.9.0
     #   jupyterlab-pygments
     #   nbconvert
     #   qtconsole
-pylint==2.11.1
+pylint==2.12.1
     # via -r requirements.in
 pyparsing==2.4.7
     # via
