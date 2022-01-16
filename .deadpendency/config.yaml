@@ -12,12 +12,14 @@ ignore-failures:
 
   python:
     - async-generator
+    - backcall
     - cycler
     - entrypoints
     - ipython-genutils
     - jupyter
     - mccabe
     - mistune
+    - pexpect
     - pickleshare
     - qtpy
     - send2trash
