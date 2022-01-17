@@ -38,7 +38,7 @@ fonttools==4.28.2
     # via matplotlib
 iniconfig==1.1.1
     # via pytest
-ipykernel==6.6.1
+ipykernel==6.7.0
     # via
     #   -r requirements.in
     #   ipywidgets
@@ -128,7 +128,7 @@ nest-asyncio==1.5.1
     #   ipykernel
     #   nbclient
     #   notebook
-notebook==6.4.6
+notebook==6.4.7
     # via
     #   -r requirements.in
     #   jupyter
