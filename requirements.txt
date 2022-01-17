@@ -133,7 +133,7 @@ notebook==6.4.6
     #   -r requirements.in
     #   jupyter
     #   widgetsnbextension
-numpy==1.22.0
+numpy==1.22.1
     # via
     #   -r requirements.in
     #   matplotlib
