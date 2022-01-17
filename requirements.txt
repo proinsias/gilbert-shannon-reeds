@@ -128,7 +128,7 @@ nest-asyncio==1.5.1
     #   ipykernel
     #   nbclient
     #   notebook
-notebook==6.4.6
+notebook==6.4.7
     # via
     #   -r requirements.in
     #   jupyter
