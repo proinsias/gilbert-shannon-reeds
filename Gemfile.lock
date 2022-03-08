@@ -71,7 +71,7 @@ GEM
       mixlib-cli (~> 2.1, >= 2.1.1)
       mixlib-config (>= 2.2.1, < 4)
       mixlib-shellout
-    mini_portile2 (2.6.1)
+    mini_portile2 (2.8.0)
     minitest (5.15.0)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.9)
@@ -82,8 +82,8 @@ GEM
     multipart-post (2.1.1)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.13.3)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     parallel (1.20.1)
     parser (2.7.2.0)
@@ -93,7 +93,7 @@ GEM
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
-    racc (1.5.2)
+    racc (1.6.0)
     rainbow (3.0.0)
     reek (6.0.2)
       kwalify (~> 0.7.0)
