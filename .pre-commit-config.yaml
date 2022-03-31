@@ -5,118 +5,186 @@
 # Which of these should have stages?
 
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
-    hooks:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.1.0
+      hooks:
       # General
-      - id: check-added-large-files
-      - id: check-case-conflict
-      - id: check-docstring-first
-      - id: check-executables-have-shebangs
-      - id: check-merge-conflict
-      - id: check-symlinks
-      - id: check-toml
-      - id: check-xml
-      - id: check-yaml
-      - id: detect-private-key
-      - id: double-quote-string-fixer
-      - id: end-of-file-fixer
-      - id: mixed-line-ending  # Replaces or checks mixed line ending.
-      - id: trailing-whitespace
+          - id: check-added-large-files
+          - id: check-case-conflict
+          - id: check-docstring-first
+          - id: check-executables-have-shebangs
+          - id: check-merge-conflict
+          - id: check-symlinks
+          - id: check-toml
+          - id: check-xml
+          - id: check-yaml
+          - id: detect-private-key
+          - id: double-quote-string-fixer
+          - id: end-of-file-fixer
+          - id: mixed-line-ending # Replaces or checks mixed line ending.
+          - id: trailing-whitespace
 
       # Json
-      - id: check-json
-      - id: pretty-format-json  # Checks that all your JSON files are pretty.
+          - id: check-json
+          - id: pretty-format-json # Checks that all your JSON files are pretty.
 
       # Python
-      - id: check-ast  # Check whether files parse as valid python.
-      - id: check-builtin-literals  # Require literal syntax when initializing empty or zero Python builtin types.
-      - id: debug-statements  # Check for debugger imports and py37+ breakpoint() calls in python source.
-      - id: name-tests-test  # Assert that files in tests/ end in _test.py, or optionally test*.py
+          - id: check-ast # Check whether files parse as valid python.
+          - id: check-builtin-literals # Require literal syntax when initializing empty or zero Python builtin types.
+          - id: debug-statements # Check for debugger imports and py37+ breakpoint() calls in python source.
+          - id: name-tests-test # Assert that files in tests/ end in _test.py, or optionally test*.py
 
   # General
 
-  - repo: https://github.com/sirosen/fix-smartquotes
-    rev: 0.2.0
-    hooks:
-      - id: fix-smartquotes
+    - repo: https://github.com/sirosen/texthooks
+      rev: 0.3.1
+      hooks:
+          - id: fix-smartquotes
+          - id: fix-ligatures
 
   # Git
 
-  - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.17.0
-    hooks:
-      - id: gitlint
+    - repo: https://github.com/jorisroovers/gitlint
+      rev: v0.17.0
+      hooks:
+          - id: gitlint
 
-  - repo: https://github.com/sirosen/check-jsonschema
-    rev: 0.10.0
-    hooks:
-      - id: check-github-workflows
+    - repo: https://github.com/sirosen/check-jsonschema
+      rev: 0.14.2
+      hooks:
+          - id: check-github-workflows
 
   # Markdown
 
-  - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.13
-    hooks:
-      - id: mdformat
-        additional_dependencies:
-          - mdformat-beautysh
-          - mdformat-black
-          - mdformat-config
-          - mdformat-gfm
-          - mdformat-shfmt
-          - mdformat-tables
-          - mdformat-toc
+    - repo: https://github.com/executablebooks/mdformat
+      rev: 0.7.14
+      hooks:
+          - id: mdformat
+            additional_dependencies:
+                - mdformat-beautysh
+                - mdformat-black
+                - mdformat-config
+                - mdformat-gfm
+                - mdformat-shfmt
+                - mdformat-tables
+                - mdformat-toc
 
   # Python
 
-  - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.2.1
-    hooks:
-      - id: add-trailing-comma
+    - repo: https://github.com/pre-commit/mirrors-pylint
+      rev: v3.0.0a4
+      hooks:
+          - id: pylint
 
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
-    rev: v1.2.2
-    hooks:
-      - id: python-safety-dependencies-check
+    - repo: https://github.com/hadialqattan/pycln
+      rev: v1.2.5 # Possible releases: https://github.com/hadialqattan/pycln/releases
+      hooks:
+          - id: pycln
 
-  - repo: https://github.com/jazzband/pip-tools
-    rev: 6.4.0
-    hooks:
-      - id: pip-compile
-        files: ^requirements/production\.(in|txt)$
-        args: [requirements/production.in]
+    - repo: https://github.com/asottile/add-trailing-comma
+      rev: v2.2.2
+      hooks:
+          - id: add-trailing-comma
 
-  - repo: https://github.com/asottile/pyupgrade
+    - repo: https://github.com/pycqa/pydocstyle
+      rev: 6.1.1
+      hooks:
+          - id: pydocstyle
+
+    - repo: https://github.com/asottile/dead
+      rev: v1.4.0
+      hooks:
+          - id: dead
+
+    - repo: https://github.com/pycqa/isort
+      rev: 5.10.1
+      hooks:
+          - id: isort
+            name: isort (python)
+
+    - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+      rev: v1.2.4
+      hooks:
+          - id: python-safety-dependencies-check
+
+    - repo: https://github.com/psf/black
+      rev: 22.3.0
+      hooks:
+          - id: black
+
+    - repo: https://github.com/pre-commit/mirrors-mypy
+      rev: v0.942
+      hooks:
+          - id: mypy
+
+    - repo: https://github.com/MarcoGorelli/absolufy-imports
+      rev: v0.3.1
+      hooks:
+          - id: absolufy-imports
+
+    - repo: https://github.com/pre-commit/pygrep-hooks
+      rev: v1.9.0
+      hooks:
+          - id: python-check-blanket-noqa
+          - id: python-check-blanket-type-ignore
+          - id: python-check-mock-methods
+          - id: python-no-eval
+          - id: python-no-log-warn
+          - id: python-use-type-annotations
+          - id: rst-backticks
+          - id: rst-directive-colons
+          - id: rst-inline-touching-normal
+          - id: text-unicode-replacement-char
+
+    - repo: https://github.com/jazzband/pip-tools
+      rev: 6.5.1
+      hooks:
+          - id: pip-compile
+            files: ^requirements/production\.(in|txt)$
+            args: [requirements/production.in]
+
+    - repo: https://github.com/asottile/pyupgrade
     # Automatically upgrade syntax for newer versions of the language.
-    rev: v2.31.0
-    hooks:
-      - id: pyupgrade
+      rev: v2.31.1
+      hooks:
+          - id: pyupgrade
 
   # YAML
 
-  - repo: https://github.com/adrienverge/yamllint
-    rev: v1.26.3
-    hooks:
-      - id: yamllint
-        args: [-c=.yamllint.yml]
+    - repo: https://github.com/adrienverge/yamllint
+      rev: v1.26.3
+      hooks:
+          - id: yamllint
+            args: [-c=.yamllint.yml]
+
+    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+      rev: 0.1.1
+      hooks:
+          - id: yamlfmt
 
   # Mixed
 
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.5
-    hooks:
-      - id: git-check  # Configure in .gitattributes
+    - repo: https://github.com/jumanjihouse/pre-commit-hooks
+      rev: 2.1.6
+      hooks:
+          - id: git-check # Configure in .gitattributes
       # - id: git-dirty  # Configure in .gitignore
-      - id: script-must-have-extension
-      - id: script-must-not-have-extension
-      - id: shellcheck
-        args: ['--external-sources', '--format=gcc', '--shell=bash']
-      - id: shfmt
+          - id: script-must-have-extension
+          - id: script-must-not-have-extension
+          - id: shellcheck
+            args: [--external-sources, --format=gcc, --shell=bash]
+          - id: shfmt
 
-  - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.10
-    hooks:
-      - id: remove-crlf
-      - id: remove-tabs
-        exclude: .git/COMMIT_EDITMSG
+    - repo: https://github.com/Lucas-C/pre-commit-hooks
+      rev: v1.1.13
+      hooks:
+          - id: remove-crlf
+          - id: remove-tabs
+            exclude: .git/COMMIT_EDITMSG
+
+    - repo: https://github.com/sirosen/check-jsonschema
+      rev: 0.14.2
+      hooks:
+          - id: check-github-actions
+          - id: check-github-workflows
+          - id: check-readthedocs
