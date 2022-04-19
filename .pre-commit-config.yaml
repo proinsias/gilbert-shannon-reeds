@@ -50,7 +50,7 @@ repos:
           - id: gitlint
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.14.2
+      rev: 0.14.3
       hooks:
           - id: check-github-workflows
 
@@ -77,12 +77,12 @@ repos:
           - id: pylint
 
     - repo: https://github.com/hadialqattan/pycln
-      rev: v1.2.5 # Possible releases: https://github.com/hadialqattan/pycln/releases
+      rev: v1.3.1 # Possible releases: https://github.com/hadialqattan/pycln/releases
       hooks:
           - id: pycln
 
     - repo: https://github.com/asottile/add-trailing-comma
-      rev: v2.2.2
+      rev: v2.2.3
       hooks:
           - id: add-trailing-comma
 
@@ -145,7 +145,7 @@ repos:
 
     - repo: https://github.com/asottile/pyupgrade
     # Automatically upgrade syntax for newer versions of the language.
-      rev: v2.31.1
+      rev: v2.32.0
       hooks:
           - id: pyupgrade
 
@@ -183,7 +183,7 @@ repos:
             exclude: .git/COMMIT_EDITMSG
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.14.2
+      rev: 0.14.3
       hooks:
           - id: check-github-actions
           - id: check-github-workflows
