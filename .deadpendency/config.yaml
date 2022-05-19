@@ -1,5 +1,20 @@
 ---
 
+ignore-failures:
+
+    python:
+        - async-generator
+        - backcall
+        - ipython-genutils
+        - jupyter
+        - pexpect
+        - pickleshare
+        - webencodings
+
+    ruby:
+        - ruby-lint
+
+
 additional-dependency-files:
     - type: bundler-gemfile
       path: Gemfile
