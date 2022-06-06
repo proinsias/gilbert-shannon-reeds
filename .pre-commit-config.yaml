@@ -59,21 +59,6 @@ repos:
     hooks:
       - id: check-github-workflows
 
-  # Markdown
-
-  - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.14
-    hooks:
-      - id: mdformat
-        additional_dependencies:
-          - mdformat-beautysh
-          - mdformat-black
-          - mdformat-config
-          - mdformat-gfm
-          - mdformat-shfmt
-          - mdformat-tables
-          - mdformat-toc
-
   # Python
 
   - repo: https://github.com/pre-commit/mirrors-pylint
