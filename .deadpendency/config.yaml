@@ -1,23 +1,70 @@
 ---
-
 ignore-failures:
+  python:
+    - alabaster
+    - astor
+    - astunparse
+    - async-generator
+    - async-timeout
+    - backcall
+    - blinker
+    - click-completion
+    - click-configfile
+    - click-default-group
+    - click-didyoumean
+    - click-log
+    - click-man
+    - click-repl
+    - click-spinner
+    - click-threading
+    - commonmark
+    - cycler
+    - doublemetaphone
+    - entrypoints
+    - future
+    - google-pasta
+    - imagesize
+    - ipython-genutils
+    - jupyter
+    - jupyter-contrib-core
+    - jupyter-contrib-nbextensions
+    - markupsafe
+    - mccabe
+    - mistune
+    - patsy
+    - pexpect
+    - pickleshare
+    - probableparsing
+    - probablepeople
+    - pyasn1
+    - pyasn1-modules
+    - pylev
+    - send2trash
+    - sklearn
+    - sphinxcontrib-applehelp
+    - sphinxcontrib-devhelp
+    - sphinxcontrib-jsmath
+    - sphinxcontrib-qthelp
+    - termcolor
+    - testpath
+    - vobject
+    - webencodings
+    - widgetsnbextension
 
-    python:
-        - async-generator
-        - backcall
-        - ipython-genutils
-        - jupyter
-        - pexpect
-        - pickleshare
-        - webencodings
-
-    ruby:
-        - ruby-lint
-
+  ruby:
+    - bundle-audit
+    - jekyll-gist
+    - jekyll-github-metadata
+    - jekyll-paginate
+    - jekyll-sitemap
+    - jemoji
+    - ruby-lint
+    - terminal-notifier
+    - wdm
 
 additional-dependency-files:
-    - type: bundler-gemfile
-      path: Gemfile
+  - type: bundler-gemfile
+    path: Gemfile
 
-    - type: pip-requirements-txt
-      path: requirements.txt
+  - type: pip-requirements-txt
+    path: requirements.txt
