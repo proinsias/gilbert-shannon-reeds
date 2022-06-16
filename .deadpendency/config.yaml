@@ -39,15 +39,19 @@ ignore-failures:
     - pyasn1
     - pyasn1-modules
     - pylev
+    - PySocks
+    - pytz-deprecation-shim
     - send2trash
     - sklearn
     - sphinxcontrib-applehelp
     - sphinxcontrib-devhelp
     - sphinxcontrib-jsmath
     - sphinxcontrib-qthelp
+    - stem
     - termcolor
     - testpath
     - vobject
+    - wcwidth
     - webencodings
     - widgetsnbextension
 
