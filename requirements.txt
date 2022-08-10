@@ -113,7 +113,7 @@ mistune==0.8.4
     # via nbconvert
 nbclient==0.5.3
     # via nbconvert
-nbconvert==6.0.7
+nbconvert==6.3.0
     # via
     #   jupyter
     #   notebook
