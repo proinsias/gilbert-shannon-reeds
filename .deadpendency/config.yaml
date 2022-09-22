@@ -28,9 +28,11 @@ ignore-failures:
     - jupyter
     - jupyter-contrib-core
     - jupyter-contrib-nbextensions
+    - keras-preprocessing
     - markupsafe
     - mccabe
     - mistune
+    - opt-einsum
     - patsy
     - pexpect
     - pickleshare

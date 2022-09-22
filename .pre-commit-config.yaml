@@ -32,13 +32,13 @@ repos:
   # General
 
   - repo: https://github.com/sirosen/texthooks
-    rev: 0.3.1
+    rev: 0.4.0
     hooks:
       - id: fix-smartquotes
       - id: fix-ligatures
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v2.7.1
+    rev: v3.0.0-alpha.0
     hooks:
       - id: prettier
         stages: [commit]
@@ -51,7 +51,7 @@ repos:
       - id: gitlint
 
   - repo: https://github.com/sirosen/check-jsonschema
-    rev: 0.17.1
+    rev: 0.18.3
     hooks:
       - id: check-github-workflows
 
@@ -63,7 +63,7 @@ repos:
       - id: pylint
 
   - repo: https://github.com/hadialqattan/pycln
-    rev: v2.0.4 # Possible releases: https://github.com/hadialqattan/pycln/releases
+    rev: v2.1.1 # Possible releases: https://github.com/hadialqattan/pycln/releases
     hooks:
       - id: pycln
 
@@ -94,7 +94,7 @@ repos:
       - id: python-safety-dependencies-check
 
   - repo: https://github.com/psf/black
-    rev: 22.6.0
+    rev: 22.8.0
     hooks:
       - id: black
 
@@ -131,14 +131,14 @@ repos:
 
   - repo: https://github.com/asottile/pyupgrade
     # Automatically upgrade syntax for newer versions of the language.
-    rev: v2.37.2
+    rev: v2.38.0
     hooks:
       - id: pyupgrade
 
   # YAML
 
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.27.1
+    rev: v1.28.0
     hooks:
       - id: yamllint
         args: [-c=.yamllint.yml]
@@ -146,7 +146,7 @@ repos:
   # Mixed
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.6
+    rev: 3.0.0
     hooks:
       - id: git-check # Configure in .gitattributes
       # - id: git-dirty  # Configure in .gitignore
@@ -157,14 +157,14 @@ repos:
       - id: shfmt
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.3.0
+    rev: v1.3.1
     hooks:
       - id: remove-crlf
       - id: remove-tabs
         exclude: .git/COMMIT_EDITMSG
 
   - repo: https://github.com/sirosen/check-jsonschema
-    rev: 0.17.1
+    rev: 0.18.3
     hooks:
       - id: check-github-actions
       - id: check-github-workflows
