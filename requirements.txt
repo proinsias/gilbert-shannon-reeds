@@ -4,10 +4,6 @@
 #
 #    ./bin/update-requirements
 #
-appnope==0.1.3
-    # via
-    #   ipykernel
-    #   ipython
 argon2-cffi==21.3.0
     # via notebook
 argon2-cffi-bindings==21.2.0
@@ -82,7 +78,7 @@ jinja2==3.1.2
     # via
     #   nbconvert
     #   notebook
-joblib==1.1.0
+joblib==1.2.0
     # via scikit-learn
 jsonschema==4.14.0
     # via nbformat
