@@ -1,0 +1,13 @@
+{
+  "ignorePaths": [
+    "**/.git/**",
+    ".*",
+    "Gemfile",
+    "**/megalinter-reports/**",
+    "**/.gitleaksignore",
+    "**/project-words.txt"
+  ],
+  "language": "en",
+  "noConfigSearch": true,
+  "version": "0.2"
+}

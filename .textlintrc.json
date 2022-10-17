@@ -1,0 +1,49 @@
+{
+  "filters": {
+    "comments": true
+  },
+  "plugins": ["latex2e"],
+  "rules": {
+    "alex": {
+      "allow": []
+    },
+    "apostrophe": true,
+    "common-misspellings": {
+      "ignore": []
+    },
+    "diacritics": true,
+    "doubled-spaces": true,
+    "editorconfig": false,
+    "en-capitalization": true,
+    "en-spell": true,
+    "max-number-of-lines": {
+      "max": 300
+    },
+    "no-dead-link": {
+      "checkRelative": true,
+      "baseURI": null,
+      "ignore": [],
+      "preferGET": [],
+      "ignoreRedirects": false,
+      "retry": 3,
+      "userAgent": "textlint-rule-no-dead-link/1.0",
+      "maxRetryTime": 10
+    },
+    "no-empty-section": true,
+    "no-start-duplicated-conjunction": {
+      "interval": 2
+    },
+    "no-todo": true,
+    "stop-words": {
+      "defaultWords": true
+    },
+    "terminology": {
+      "defaultTerms": true
+    },
+    "unexpanded-acronym": {
+      "min_acronym_len": 3
+    },
+    "@textlint-rule/no-duplicate-abbr": true,
+    "@textlint-rule/no-invalid-control-character": true
+  }
+}

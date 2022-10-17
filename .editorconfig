@@ -1,0 +1,51 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_file = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+max_line_length = 120
+quote_type = single
+trim_trailing_whitespace = true
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+## Markdown
+[*.md]
+trim_trailing_whitespace = false
+
+# Python
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Ruby
+[{*.rb,*.gemspec,Gemfile{,.lock},Rakefile,Vagrantfile}]
+indent_size = 2
+
+# Front End Languages (HTML, JS, CSS etc)
+[*.{js, css, html}]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+
+[*.json]
+quote_type = double
+
+# YAML Based files - 2 space indent
+[*.{yml, yaml, sls}]
+indent_size = 2
+indent_style = space
+
+[*.{js,json}]
+indent_size = 2
+indent_style = space
