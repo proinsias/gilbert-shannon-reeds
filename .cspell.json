@@ -5,7 +5,9 @@
     "Gemfile",
     "**/megalinter-reports/**",
     "**/.gitleaksignore",
-    "**/project-words.txt"
+    "**/project-words.txt",
+    "**/*.ipynb",
+    "**/*.html"
   ],
   "language": "en",
   "noConfigSearch": true,

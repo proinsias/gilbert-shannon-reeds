@@ -43,6 +43,7 @@ ignore-failures:
         - pylev
         - PySocks
         - pytz-deprecation-shim
+        - semver
         - send2trash
         - sklearn
         - sphinxcontrib-applehelp

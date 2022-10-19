@@ -14,7 +14,6 @@ repos:
           - id: check-xml
           - id: check-yaml
           - id: detect-private-key
-          - id: double-quote-string-fixer
           - id: end-of-file-fixer
           - id: mixed-line-ending # Replaces or checks mixed line ending.
           - id: trailing-whitespace

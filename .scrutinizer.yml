@@ -1,11 +1,11 @@
 ---
 build:
   environment:
-    ruby: "2.3.1"
-    python: "3.6.3"
+    ruby: '2.3.1'
+    python: '3.6.3'
   tests:
     before:
-      - "gem update --system"
+      - 'gem update --system'
     override:
       - command: shellcheck-run
         on_node: 1
@@ -82,10 +82,10 @@ checks:
     format_missing_final_newline: true
     format_lowercase_l_suffix: true
     format_line_too_long:
-      max_length: "120"
+      max_length: '120'
     format_bad_whitespace: true
     format_bad_indentation:
-      indentation: "4 spaces"
+      indentation: '4 spaces'
     format_backtick: true
     exceptions_raising_string: true
     exceptions_raising_non_exception: true
@@ -141,17 +141,17 @@ checks:
     basic_missing_docstring: true
     basic_lost_exception: true
     basic_invalid_name:
-      functions: "[a-z_][a-z0-9_]{2,30}$"
-      variables: "[a-z_][a-z0-9_]{2,30}$"
-      whitelisted_names: "i,j,k,ex,Run,_"
-      constants: "(([A-Z_][A-Z0-9_]*)|(__.*__))$"
-      attributes: "[a-z_][a-z0-9_]{2,30}$"
-      arguments: "[a-z_][a-z0-9_]{2,30}$"
-      class_attributes: "([A-Za-z_][A-Za-z0-9_]{2,30}|(__.*__))$"
-      inline_vars: "[A-Za-z_][A-Za-z0-9_]*$"
-      classes: "[A-Z_][a-zA-Z0-9]+$"
-      modules: "(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$"
-      methods: "[a-z_][a-z0-9_]{2,30}$"
+      functions: '[a-z_][a-z0-9_]{2,30}$'
+      variables: '[a-z_][a-z0-9_]{2,30}$'
+      whitelisted_names: 'i,j,k,ex,Run,_'
+      constants: '(([A-Z_][A-Z0-9_]*)|(__.*__))$'
+      attributes: '[a-z_][a-z0-9_]{2,30}$'
+      arguments: '[a-z_][a-z0-9_]{2,30}$'
+      class_attributes: '([A-Za-z_][A-Za-z0-9_]{2,30}|(__.*__))$'
+      inline_vars: '[A-Za-z_][A-Za-z0-9_]*$'
+      classes: '[A-Z_][a-zA-Z0-9]+$'
+      modules: '(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$'
+      methods: '[a-z_][a-z0-9_]{2,30}$'
     basic_init_is_generator: true
     basic_function_redefined: true
     basic_expression_not_assigned: true
@@ -168,4 +168,4 @@ checks:
 tools:
   pylint:
     python_version: 3 # Possible values: 2, 3
-    config_file: ".pylintrc"
+    config_file: '.pylintrc'

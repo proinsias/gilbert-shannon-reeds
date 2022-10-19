@@ -12,4 +12,4 @@ rules:
     max: 120
     # level: warning # don't fail if a line is longer.
   truthy:
-    allowed-values: ["true", "false", "on"]
+    allowed-values: ['true', 'false', 'on']
