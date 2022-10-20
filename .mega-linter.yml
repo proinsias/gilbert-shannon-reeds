@@ -7,9 +7,12 @@ BASH_SHELLCHECK_ARGUMENTS: '--external-sources --format=gcc --shell=bash'
 DISABLE:
   - ACTION # FIXME: Figure out why doesn't run!
   - EDITORCONFIG # FIXME: Figure out why not working!?
+  - HTML
 DISABLE_LINTERS:
   - BASH_SHELLCHECK # FIXME: Related to ACTION error?
+  - REPOSITORY_DEVSKIM
 FILEIO_REPORTER: true
 JSON_V8R_DISABLE_ERRORS: true
 LINTER_RULES_PATH: .
+PYTHON_BANDIT_CONFIG_FILE: pyproject.toml
 SHOW_ELAPSED_TIME: true

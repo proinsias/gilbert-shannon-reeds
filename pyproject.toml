@@ -1,0 +1,25 @@
+[tool.bandit]
+skips = ["B311"]
+
+[tool.bandit.assert_used]
+skips = ['*_test.py', '*test_*.py', '*unittest.py']
+
+[tool.poetry]
+name = "gilbert-shannon-reeds"
+version = "0.0.1"
+description = "Python implementation of the Gilbert-Shannon-Reeds model for shuffling playing cards."
+license = "MIT License"
+authors = ["Francis T. O'Donovan <proinsias@users.noreply.github.com>"]
+repository = "https://github.com/proinsias/gilbert-shannon-reeds"
+documentation = "https://github.com/proinsias/gilbert-shannon-reeds"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/proinsias/gilbert-shannon-reeds/issues"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
