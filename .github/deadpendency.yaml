@@ -76,4 +76,4 @@ additional-dependency-files:
       path: Gemfile
 
     - type: pip-requirements-txt
-      path: requirements.txt
+      path: pyproject.toml

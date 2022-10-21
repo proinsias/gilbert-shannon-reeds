@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-CUSTOM_COMPILE_COMMAND="./bin/update-requirements"
-export CUSTOM_COMPILE_COMMAND
-
-pip-compile --annotate --header --upgrade --verbose \
-    --output-file requirements.txt requirements.in
-
-safety check --file requirements.txt
