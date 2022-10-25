@@ -54,6 +54,7 @@ ignore-failures:
         - stem
         - termcolor
         - testpath
+        - toml
         - vobject
         - wcwidth
         - webencodings
